@@ -1,10 +1,12 @@
-package algorithm;
+package org.constepanov.stego;
+
+import org.constepanov.util.Utils;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import static algorithm.Utils.*;
+import static org.constepanov.util.Utils.*;
 
 public class CoxAlgorithm {
 

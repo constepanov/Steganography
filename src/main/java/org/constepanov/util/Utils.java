@@ -1,4 +1,4 @@
-package algorithm;
+package org.constepanov.util;
 
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
