@@ -53,8 +53,8 @@ public class Main {
         } else if (mode == 4) {
             String message = Utils.randomString(100);
             System.out.println("Message: " + message);
-            ChartBuilder.psnrAlphaChart(image, message);
-            ChartBuilder.errorsAlphaChart(image, message);
+            //ChartBuilder.psnrAlphaChart(image, message);
+            //ChartBuilder.errorsAlphaChart(image, message);
             ChartBuilder.psnrChart(image);
         }
         else {

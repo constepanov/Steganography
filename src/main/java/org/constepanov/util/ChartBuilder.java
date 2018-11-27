@@ -15,6 +15,8 @@ import static org.constepanov.util.Utils.*;
 
 public class ChartBuilder {
 
+    private final static String directory = "src/main/resources/";
+
     public static void psnrChart(BufferedImage image) {
         XYChart chart = new XYChartBuilder()
                 .width(800)
@@ -44,7 +46,7 @@ public class ChartBuilder {
 
         chart.getStyler().setLegendVisible(true);
         try {
-            BitmapEncoder.saveBitmap(chart, "psnr", BitmapEncoder.BitmapFormat.PNG);
+            BitmapEncoder.saveBitmap(chart, directory + "psnr", BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +73,7 @@ public class ChartBuilder {
         }
         chart.addSeries("mesage", alphaValues, psnrValues);
         try {
-            BitmapEncoder.saveBitmap(chart, "psnrAlpha[message=" + message.length() * 8 + "]", BitmapEncoder.BitmapFormat.PNG);
+            BitmapEncoder.saveBitmap(chart, directory + "psnrAlpha[message=" + message.length() * 8 + "]", BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -102,7 +104,7 @@ public class ChartBuilder {
         }
         chart.addSeries("1", alphaValues, errorsNumberValues);
         try {
-            BitmapEncoder.saveBitmap(chart, "errorsAlpha[message=" + message.length() * 8 + "]", BitmapEncoder.BitmapFormat.PNG);
+            BitmapEncoder.saveBitmap(chart, directory + "errorsAlpha[message=" + message.length() * 8 + "]", BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException e) {
             e.printStackTrace();
         }
