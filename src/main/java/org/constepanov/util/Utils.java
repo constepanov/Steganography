@@ -40,7 +40,7 @@ public class Utils {
         return 10 * log10((w * h * pow(255, 2)) / sum);
     }
 
-    static int[][] getComponent(BufferedImage image, String componentName) {
+    public static int[][] getComponent(BufferedImage image, String componentName) {
         int w = image.getWidth();
         int h = image.getHeight();
         int[][] rgb = new int[h][w];
@@ -68,7 +68,7 @@ public class Utils {
         return rgb;
     }
 
-    static int[][] combineComponents(int[][] red, int[][] green, int[][] blue) {
+    public static int[][] combineComponents(int[][] red, int[][] green, int[][] blue) {
         int h = red.length;
         int w = red[0].length;
         int[][] result = new int[h][w];
@@ -128,7 +128,7 @@ public class Utils {
         return resultArray;
     }
 
-    static int[][] directDiscreteCosineTransform(int[][] block) {
+    public static int[][] directDiscreteCosineTransform(int[][] block) {
         if (block.length != 8 || block[0].length != 8) {
             throw new IllegalArgumentException("Matrix should be 8 x 8 pixels");
         }
@@ -152,7 +152,7 @@ public class Utils {
         return result;
     }
 
-    static int[][] inverseDiscreteCosineTransform(int[][] block) {
+    public static int[][] inverseDiscreteCosineTransform(int[][] block) {
         if (block.length != 8 || block[0].length != 8) {
             throw new IllegalArgumentException("Matrix should be 8x8 pixels");
         }

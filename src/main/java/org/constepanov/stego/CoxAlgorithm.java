@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import static org.constepanov.util.Utils.*;
 
 public class CoxAlgorithm {
 
@@ -25,9 +24,9 @@ public class CoxAlgorithm {
         int capacity = getContainerCapacity();
         System.out.println("Container capacity = " + capacity + " bits");
         int n = 8;
-        int[] bits = getBitArray(message);
+        int[] bits = Utils.getBitArray(message);
         int bitIndex = 0;
-        BufferedImage stegoImage = copyImage(image);
+        BufferedImage stegoImage = Utils.copyImage(image);
         for (int i = 0; i < image.getHeight(); i += 8) {
             for (int j = 0; j < image.getWidth(); j += 8) {
                 if (bitIndex < bits.length && bitIndex < capacity) {
@@ -36,12 +35,12 @@ public class CoxAlgorithm {
                     int[][] green = Utils.getComponent(subImage, "green");
                     int[][] blue = Utils.getComponent(subImage, "blue");
                     int[][] dct = Utils.directDiscreteCosineTransform(red);
-                    int[] index = getIndexOfMax(dct);
+                    int[] index = Utils.getIndexOfMax(dct);
                     int s = bits[bitIndex] == 0 ? 1 : -1;
                     dct[index[0]][index[1]] = (int) (dct[index[0]][index[1]] + alpha * s);
                     int[][] idctRed = Utils.inverseDiscreteCosineTransform(dct);
                     int[][] rgb = Utils.combineComponents(idctRed, green, blue);
-                    setSubImage(stegoImage, rgb, j, i);
+                    Utils.setSubImage(stegoImage, rgb, j, i);
                     bitIndex++;
                 }
             }
@@ -75,7 +74,7 @@ public class CoxAlgorithm {
                     int[][] pRed = Utils.getComponent(pSubImage, "red");
                     int[][] dctOriginalRed = Utils.directDiscreteCosineTransform(oRed);
                     int[][] dctProcessedRed = Utils.directDiscreteCosineTransform(pRed);
-                    int[] indexOfMax = getIndexOfMax(dctOriginalRed);
+                    int[] indexOfMax = Utils.getIndexOfMax(dctOriginalRed);
                     int y = indexOfMax[0];
                     int x = indexOfMax[1];
                     bits[index] = dctProcessedRed[y][x] > dctOriginalRed[y][x] ? 0 : 1;
